@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOTATO - Kentang Goreng Ceria</title>
+  <meta name="description" content="BOTATO — Kentang goreng renyah, gurih, dan murah. Pesan sekarang lewat WhatsApp!">
+  <meta name="theme-color" content="#ffb300">
+
+  <!-- Structured data (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "BOTATO",
+    "description": "Kentang goreng renyah dan murah di sekitar SMKN 1 Sampit.",
+    "telephone": "+62895321233917",
+    "email": "botato.id@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "SMKN 1 Sampit",
+      "addressLocality": "Sampit",
+      "addressCountry": "ID"
+    }
+  }
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ffb300'/><text x='50' y='58' font-size='40' text-anchor='middle' font-family='Poppins, sans-serif' fill='%23ffffff'>🍟</text></svg>">
+
+  <style>
+    :root{
+      --bg:#fff8e1;
+      --accent:#ff9500;
+      --accent-2:#ffb300;
+      --muted:#4c4b4b;
+      --card:#ffffff;
+      --radius:14px;
+      --shadow: 0 8px 22px rgba(0,0,0,0.08);
+      --gap:20px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg); color:var(--muted); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.45; scroll-behavior:smooth;
+    }
+
+    /* Accessible focus - visible only on keyboard navigation */
+    :focus{outline:3px solid rgba(255,149,0,0.18); outline-offset:3px}
+
+    .container{max-width:var(--max-width); margin:0 auto; padding:24px}
+
+    /* NAVBAR */
+    header{position:sticky; top:0; z-index:999; background:linear-gradient(90deg,var(--accent-2),var(--accent)); box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 20px; max-width:var(--max-width); margin:0 auto}
+    .brand{display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none}
+    .brand h1{font-size:1.25rem; margin:0}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{color:#fff; text-decoration:none; font-weight:600}
+    nav a:hover, nav a:focus{opacity:0.95}
+
+    /* Mobile menu */
+    .menu-toggle{display:none; background:transparent; border:0; color:#fff; font-size:20px}
+
+    /* HERO */
+    .hero{background:linear-gradient(180deg,#fffdf4 0%, #fff3d6 100%); padding:72px 20px; text-align:center; position:relative; overflow:hidden}
+    .hero .inner{max-width:900px; margin:0 auto}
+    .hero h2{color:var(--accent); font-size:2.4rem; margin-bottom:10px}
+    .hero p{font-size:1.1rem; margin-bottom:18px}
+    .btn{display:inline-block; background:var(--accent-2); color:#fff; padding:12px 20px; border-radius:10px; text-decoration:none; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.12); transition:transform .18s ease, box-shadow .18s}
+    .btn:hover{transform:translateY(-4px)}
+
+    /* Floating potatoes (SVG) */
+    .potato-svg{position:absolute; width:64px; will-change:transform; opacity:0.95}
+    .pot1{left:6%; top:20%; animation:float 6s ease-in-out infinite}
+    .pot2{right:8%; top:10%; animation:float 5s ease-in-out .8s infinite}
+    .pot3{left:50%; top:2%; transform:translateX(-50%); animation:float 7s ease-in-out .5s infinite}
+
+    @keyframes float{0%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-18px) rotate(6deg)}100%{transform:translateY(0) rotate(-3deg)}}
+
+    /* MENU */
+    section{padding:54px 20px}
+    .section-title{color:var(--accent); border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:6px; margin-bottom:22px; font-size:1.6rem}
+
+    .menu-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--gap); max-width:1100px; margin:18px auto}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
+    .card img{width:100%; height:160px; object-fit:cover; display:block}
+    .card-body{padding:14px; display:flex; flex-direction:column; gap:8px}
+    .card h3{margin:0; color:var(--accent); font-size:1.05rem}
+    .price{font-weight:700; color:#444}
+    .card-footer{display:flex; gap:8px; padding:12px; align-items:center}
+    .badge{background:#fff3e0; color:var(--accent); padding:6px 8px; border-radius:999px; font-weight:700; font-size:0.85rem}
+    .order-btn{margin-left:auto; background:transparent; border:2px solid var(--accent-2); padding:8px 12px; border-radius:10px; color:var(--accent-2); font-weight:700; cursor:pointer}
+    .order-btn:hover{background:var(--accent-2); color:#fff}
+
+    /* ABOUT & CONTACT */
+    .about{background:#fff; border-radius:12px; padding:20px; max-width:900px; margin:24px auto; box-shadow:var(--shadow)}
+    .contact-grid{display:grid; grid-template-columns:1fr 300px; gap:20px; align-items:start}
+    .contact-grid p{margin:8px 0}
+
+    /* TESTIMONI */
+    .testimoni-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
+    .testi{background:#fff3d6; padding:14px; border-radius:12px}
+
+    footer{padding:22px; text-align:center; font-size:14px; color:#444}
+
+    /* Responsive */
+    @media(max-width:880px){
+      .contact-grid{grid-template-columns:1fr}
+      .hero h2{font-size:1.8rem}
+    }
+    @media(max-width:720px){
+      nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+
+    /* prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce){
+      .potato-svg, *[style*="animation"]{animation:none !important}
+      :root{scroll-behavior:auto}
+    }
+
+    /* visually hidden for accessibility */
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffb300"/><path d="M7 12c0 2 2 4 5 4s5-2 5-4-2-4-5-4-5 2-5 4z" fill="#fff"/></svg>
+        <h1>BOTATO</h1>
+      </a>
+
+      <nav aria-label="Utama">
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">☰</button>
+    </div>
+
+    <!-- mobile menu (hidden by default) -->
+    <div id="mobile-menu" style="display:none; padding:12px 20px; background:linear-gradient(90deg,var(--accent-2),var(--accent));">
+      <nav aria-label="Menu mobile">
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px">
+          <li><a href="#menu" style="color:#fff; font-weight:700;">Menu</a></li>
+          <li><a href="#about" style="color:#fff; font-weight:700;">Tentang</a></li>
+          <li><a href="#kontak" style="color:#fff; font-weight:700;">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="inner container">
+      <h2 id="hero-title">Renyah • Gurih • Murah!</h2>
+      <p>Kentang goreng paling hits di kota kamu — disajikan hangat di bowl plastik. Pesan cepat lewat WhatsApp.</p>
+      <p><a class="btn" href="#menu">Lihat Menu</a></p>
+    </div>
+
+    <!-- floating potatoes (inline SVG for consistent rendering) -->
+    <svg class="potato-svg pot1" viewBox="0 0 100 100" role="img" aria-hidden="true">
+      <g transform="translate(0,0)">
+        <ellipse cx="50" cy="50" rx="45" ry="32" fill="#f3b86c"/>
+        <circle cx="70" cy="40" r="3" fill="#b86a2e"/>
+        <circle cx="35" cy="60" r="2.5" fill="#b86a2e"/>
+      </g>
+    </svg>
+
+    <svg class="potato-svg pot2" viewBox="0 0 100 100" role="img" aria-hidden="true">
+      <g>
+        <ellipse cx="50" cy="50" rx="42" ry="30" fill="#f5c07f"/>
+        <circle cx="60" cy="35" r="3" fill="#b86a2e"/>
+      </g>
+    </svg>
+
+    <svg class="potato-svg pot3" viewBox="0 0 100 100" role="img" aria-hidden="true">
+      <g>
+        <ellipse cx="50" cy="50" rx="44" ry="32" fill="#f2b56a"/>
+        <circle cx="30" cy="45" r="2.5" fill="#b86a2e"/>
+      </g>
+    </svg>
+
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="container" aria-labelledby="menu-title">
+    <h2 id="menu-title" class="section-title">Menu Kami</h2>
+
+    <div class="menu-grid" role="list">
+      <!-- Card 1 -->
+      <article class="card" role="listitem" aria-labelledby="m1">
+        <img src="Original.png" alt="Kentang goreng original dalam bowl plastik" loading="lazy">
+        <div class="card-body">
+          <h3 id="m1">Original</h3>
+          <div class="price">Rp 8.000</div>
+          <div class="card-footer">
+            <span class="badge">Garam Only</span>
+            <button class="order-btn" data-name="Original" data-price="8000">Pesan</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card" role="listitem" aria-labelledby="m2">
+        <img src="Keju.png" alt="Kentang goreng taburan bubuk keju" loading="lazy">
+        <div class="card-body">
+          <h3 id="m2">Keju</h3>
+          <div class="price">Rp 12.000</div>
+          <div class="card-footer">
+            <span class="badge">Agak Manis</span>
+            <button class="order-btn" data-name="Keju" data-price="12000">Pesan</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card" role="listitem" aria-labelledby="m3">
+        <img src="Barbeque.png" alt="Kentang goreng taburan bumbu barbeque" loading="lazy">
+        <div class="card-body">
+          <h3 id="m3">Barbeque</h3>
+          <div class="price">Rp 12.000</div>
+          <div class="card-footer">
+            <span class="badge">Pedas Dikit</span>
+            <button class="order-btn" data-name="Barbeque" data-price="12000">Pesan</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p style="text-align:center; margin-top:18px;"><a class="btn" href="https://wa.me/62895321233917">Pesan Sekarang via WhatsApp</a></p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontak" class="container" aria-labelledby="kontak-title">
+    <h2 id="kontak-title" class="section-title">Kontak Kami</h2>
+
+    <div class="contact-grid">
+      <div>
+        <p>📍 <strong>Lokasi:</strong> Sekolah SMKN 1 SAMPIT</p>
+        <p>📞 <strong>WhatsApp:</strong> <a href="https://wa.me/62895321233917">+62 895-3212-33917</a></p>
+        <p>📧 <strong>Email:</strong> <a href="mailto:botato.id@gmail.com">botato.id@gmail.com</a></p>
+
+        <h3 style="margin-top:12px">Tanya & Pesan</h3>
+        <form id="contactForm" onsubmit="return handleContact(event)">
+          <label class="sr-only" for="name">Nama</label>
+          <input id="name" name="name" type="text" placeholder="Nama" required style="width:100%; padding:10px; margin-bottom:8px; border-radius:8px; border:1px solid #eee">
+
+          <label class="sr-only" for="message">Pesan</label>
+          <textarea id="message" name="message" placeholder="Tuliskan pesan atau pesanan singkat" required style="width:100%; padding:10px; margin-bottom:8px; border-radius:8px; border:1px solid #eee"></textarea>
+
+          <button type="submit" class="btn">Kirim via WhatsApp</button>
+        </form>
+      </div>
+
+      <aside style="background:#fff; border-radius:12px; padding:14px; box-shadow:var(--shadow)">
+        <h4>Jam Operasional</h4>
+        <p>Buka Kalo Mood</p>
+
+        
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <div style="max-width:var(--max-width); margin:0 auto; padding:12px">
+      <p>© 2025 BOTATO | Dibuat dengan cinta 💛 oleh Fawwaz</p>
+      <p style="font-size:13px; color:#666; margin-top:6px">Nomor WhatsApp: <a href="https://wa.me/62895321233917">+62 895-3212-33917</a></p>
+    </div>
+  </footer>
+
+  </main>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      if(mobileMenu.style.display === 'none' || mobileMenu.style.display === ''){
+        mobileMenu.style.display = 'block';
+      } else {
+        mobileMenu.style.display = 'none';
+      }
+    });
+
+    // Order buttons -> opens WhatsApp with prefilled message
+    function formatRupiah(amount){
+      return new Intl.NumberFormat('id-ID').format(amount);
+    }
+    document.querySelectorAll('.order-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name || 'Pesanan';
+        const price = btn.dataset.price || '';
+        const phone = '62895321233917'; // update nomor jika perlu
+        const text = `Halo BOTATO, saya mau pesan *${name}* - Rp ${formatRupiah(price)}.`;
+        const url = `https://wa.me/${phone}?text=` + encodeURIComponent(text);
+        window.open(url, '_blank');
+      });
+    });
+
+    // Contact form sends message through WhatsApp
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!name || !msg) return false;
+      const phone = '62895321233917';
+      const text = `Halo BOTATO, saya *${name}* ingin bertanya/pesan: ${msg}`;
+      const url = `https://wa.me/${phone}?text=` + encodeURIComponent(text);
+      window.open(url, '_blank');
+      return false;
+    }
+
+    // Small UX: close mobile menu on internal link click
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Improve keyboard access for order buttons
+    document.querySelectorAll('.order-btn').forEach(b => b.setAttribute('aria-label', 'Pesan via WhatsApp'));
+  </script>
+</body>
+</html>
